@@ -2,7 +2,7 @@ const asyncHandler = require("express-async-handler");
 const Casa = require("../models/casaModel");
 
 const getCasa = asyncHandler(async (req, res) => {
-  const casas = await Tarea.find();
+  const casas = await Casa.find();
   res.status(200).json({ casas });
 });
 
@@ -24,13 +24,13 @@ const createCasa = asyncHandler(async (req, res) => {
 });
 
 const deleteCasa = asyncHandler(async (req, res) => {
-  const casa = await Tarea.findById(req.params.id);
+  const casa = await Casa.findById(req.params.id);
   if (!casa) {
     res.status(404);
     throw new Error("Casa no encotrada");
   }
 
-  await tarea.deleteOne();
+  await casa.deleteOne();
 
   res.status(200).json({ id: req.params.id });
 });
